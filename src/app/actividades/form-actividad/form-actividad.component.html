@@ -1,0 +1,19 @@
+<h3><i class="fas fa-user-ninja"></i> Nueva Actividad</h3>
+<hr>
+  <div class="row">
+    <div class="col-md-8 offset-2">
+      <div method="POST">
+        <div class="form-row">
+          <div class="col-md-8">
+            <div class="form-group">
+              <div class="form-label-group">
+                <input [(ngModel)]="actividad.name" type="text" id="inputNombreActividad" class="form-control" placeholder="Nombre de Actividad" autofocus="autofocus">
+                  <label for="inputNombreActividad"> Nombre de Actividad</label>
+              </div>
+            </div>
+            <button class="btn btn-primary" (click)="saveActividad()"><i class="fas fa-plus"></i> Guardar</button><button class="btn btn-secondary" type="button" style="float: right;">Cancelar</button>
+          </div>           
+        </div>  
+      </div>
+    </div>
+  </div>

@@ -1,0 +1,45 @@
+    <!-- Breadcrumbs-->
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+          <a routerLink="/home">Home</a>
+        </li>
+        <li class="breadcrumb-item active"> Centros</li>
+      </ol>
+
+      <!-- DataTables Example -->
+      <div class="card mb-3">
+          <div class="card-header">
+            <i class="fas fa-university"></i>
+            Centros<a class="btn btn-primary btn-icon-text" routerLink="/centros/form_centro" type="button" style="float:right;"><i class="fas fa-plus"></i> Agregar</a></div>
+          <div class="card-body">
+            <div class="table-responsive">
+              <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="table table-hover" #dataTable width="100%" cellspacing="0">
+                <thead>
+                  <tr>
+                    <th>Codigo</th>
+                    <th>Nombre del Centro</th>
+                    <th>Acciones</th>
+                  </tr>
+                </thead>
+                <tfoot>
+                  <tr>
+                    <th>Codigo</th>
+                    <th>Nombre del Centro</th>
+                    <th>Acciones</th>
+                  </tr>
+                </tfoot>
+                <tbody>
+                  <tr *ngFor="let centro of centros">
+                    <td>{{ centro.codigo }}</td>
+                    <td>{{ centro.nombre_centro }}</td>
+                    <td>
+                      <button class="btn btn-primary btn-icon" type="button" routerLink="/centros/form_centro/{{centro.id}}"><i class="fas fa-edit"></i></button>
+                      <button class="btn btn-danger btn-icon ml-1" type="button" (click)="delete(centro.id)"><i class="fas fa-trash"></i></button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <div class="card-footer small text-muted">Actualizado 11:59 PM</div>
+        </div>

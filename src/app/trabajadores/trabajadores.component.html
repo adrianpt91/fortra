@@ -1,0 +1,52 @@
+
+        <!-- Breadcrumbs-->
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item">
+            <a routerLink="/home">Home</a>
+          </li>
+          <li class="breadcrumb-item active"> Trabajadores</li>
+        </ol>
+
+        <div class="card mb-3">
+            <div class="card-header">
+              <i class="fas fa-users"></i>
+              Datos de los Trabajadores<a class="btn btn-primary btn-icon-text" routerLink="/form" type="button" style="float:right;"><i class="fas fa-plus"></i> Agregar</a></div>
+            <div class="card-body">
+              <div class="table-responsive">
+                <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="table table-hover" #dataTable width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                          <th>CI</th>
+                          <th>Nombre</th>
+                          <th>Apellidos</th>
+                          <th>Municipio</th>
+                          <th>Provincia</th>
+                          <th>Direccion</th>
+                          <th>S</th>
+                          <th>Mil</th>
+                          <th>EC</th>
+                          <th>Acciones</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr *ngFor="let trabajador of trabajadores">
+                          <td>{{ trabajador.ci }}</td>
+                          <td>{{ trabajador.first_name }}</td>
+                          <td>{{ trabajador.last_name }}</td>
+                          <td>{{ trabajador.municipio }}</td>
+                          <td>{{ trabajador.provincia }}</td>
+                          <td>{{ trabajador.adress }}</td>
+                          <td>{{ trabajador.sexo }}</td>
+                          <td>{{ trabajador.militancia }}</td>
+                          <td>{{ trabajador.ec }}</td>
+                          <td>                      
+                            <button class="btn btn-primary btn-icon" type="button" routerLink="/form/{{trabajador.id}}"><i class="fas fa-edit"></i></button>
+                            <button class="btn btn-danger btn-icon ml-1" type="button" (click)="delete(trabajador.id)"><i class="fas fa-trash"></i></button>
+                          </td>
+                        </tr>
+                      </tbody>
+                </table>
+              </div>
+            </div>
+            <div class="card-footer small text-muted">Actualizado 11:59 PM</div>
+          </div>
