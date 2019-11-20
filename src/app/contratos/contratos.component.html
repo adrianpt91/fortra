@@ -13,79 +13,34 @@
             Contratos<a class="btn btn-primary btn-icon-text" href="#" type="button" style="float:right;"><i class="fas fa-plus"></i> Agregar</a></div>
           <div class="card-body">
             <div class="table-responsive">
-              <table class="table table-hover" #dataTable width="100%" cellspacing="0">
+              <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="table table-hover" #dataTable width="100%" cellspacing="0">
                 <thead>
                   <tr>
-                    <th>CI</th>
+                    <th>Codigo</th>
+                    <th>Tipo</th>
+                    <th>Fecha Alta</th>
                     <th>Nombre</th>
-                    <th>Apellidos</th>
                     <th>Cargo</th>
                     <th>Centro</th>
-                    <th>Unidad</th>
-                    <th>Tipo Contrato</th>
-                    <th>Fecha</th>
                     <th>Acciones</th>
                   </tr>
-                </thead>
-                <tfoot>
-                  <tr>
-                    <th>CI</th>
-                    <th>Nombre</th>
-                    <th>Apellidos</th>
-                    <th>Cargo</th>
-                    <th>Centro</th>
-                    <th>Unidad</th>
-                    <th>Tipo Contrato</th>
-                    <th>Fecha</th>
-                    <th>Acciones</th>
-                  </tr>
-                </tfoot>
+                </thead>                
                 <tbody>
-                  <tr>
-                    <td>91082235349</td>
-                    <td>Adrian</td>
-                    <td>Pelaez Torres</td>
-                    <td>Especialista B</td>
-                    <td>Direccion</td>
-                    <td>Base Aerea</td>
-                    <td>Indeterminado</td>
-                    <td>05/05/2019</td>
+                  <tr *ngFor="let contrato of contratos">
+                    <td>{{ contrato.codigo_contrato }}</td>
+                    <td>{{ contrato.tipo_contrato }}</td>
+                    <td>{{ contrato.fecha_alta }}</td>
+                    <td>{{ contrato.trabajador.first_name }}</td>
+                    <td>{{ contrato.cargo.nombre_cargo }}</td>
+                    <td>{{ contrato.centro.nombre_centro }}</td>
                     <td>                      
-                      <button class="btn btn-primary btn-icon" type="button"><i class="fas fa-edit"></i></button>
-                      <button class="btn btn-danger btn-icon ml-1" type="button"><i class="fas fa-trash"></i></button>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>90082235349</td>
-                    <td>Adrian2</td>
-                    <td>Pelaez Torres</td>
-                    <td>Especialista B</td>
-                    <td>UEB1</td>
-                    <td>Base Aerea</td>
-                    <td>Indeterminado</td>
-                    <td>05/05/2018</td>
-                    <td>                      
-                      <button class="btn btn-primary btn-icon" type="button"><i class="fas fa-edit"></i></button>
-                      <button class="btn btn-danger btn-icon ml-1" type="button"><i class="fas fa-trash"></i></button>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>820082235349</td>
-                    <td>Adrian3</td>
-                    <td>Pelaez Torres</td>
-                    <td>Especialista B</td>
-                    <td>UEB2</td>
-                    <td>Base Aerea</td>
-                    <td>Indeterminado</td>
-                    <td>05/05/2017</td>
-                    <td>                      
-                      <button class="btn btn-primary btn-icon" type="button"><i class="fas fa-edit"></i></button>
-                      <button class="btn btn-danger btn-icon ml-1" type="button"><i class="fas fa-trash"></i></button>
+                      <button class="btn btn-primary btn-icon" type="button" href="#"><i class="fas fa-edit"></i></button>
+                      <button class="btn btn-danger btn-icon ml-1" type="button" (click)="delete(contrato.id)"><i class="fas fa-trash"></i></button>
                     </td>
                   </tr>
                 </tbody>
               </table>
             </div>
           </div>
-          <div class="card-footer small text-muted">Actualizado 11:59 PM</div>
+          <div class="card-footer small text-muted">Actualizado 05:00 PM</div>
         </div>
