@@ -10,7 +10,7 @@ export interface Contrato{
     cargo_id: number;
     created_at?: string;
     updated_at?: string;
-    trabajador: string;
-    centro: string;
-    cargo: string;
+    trabajador?: string;
+    centro?: string;
+    cargo?: string;
 }

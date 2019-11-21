@@ -14,11 +14,13 @@ export class FormCargoComponent implements OnInit {
   };
   id: any;
   editing: boolean = false;
+  titleformcargo: string;
   cargos: Cargo[]
   constructor(private cargosService: CargosService, private activatedRoute: ActivatedRoute) { 
     this.id = this.activatedRoute.snapshot.params['id'];
     if (this.id){
       this.editing = true;
+      this.titleformcargo = 'Modificar';
       this.cargosService.get().subscribe((data: any) => {
         //this.cargos = data; //Para Django
         this.cargos = data.data; //Para Laravel
@@ -29,6 +31,7 @@ export class FormCargoComponent implements OnInit {
       });
     } else {
       this.editing = false;
+      this.titleformcargo = 'Nuevo';
     }
   }
 

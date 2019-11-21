@@ -14,11 +14,13 @@ export class FormActividadComponent implements OnInit {
   };
   id: any;
   editing: boolean = false;
+  titleformact: string;
   actividades: Actividad[]
   constructor(private actividadesService: ActividadesService, private activatedRoute: ActivatedRoute) { 
     this.id = this.activatedRoute.snapshot.params['id'];
     if (this.id){
       this.editing = true;
+      this.titleformact = 'Modificar';
       this.actividadesService.get().subscribe((data: any) => {
         //this.actividades = data; //Para Django
         this.actividades = data.data; //Para Laravel
@@ -29,6 +31,7 @@ export class FormActividadComponent implements OnInit {
       });
     } else {
       this.editing = false;
+      this.titleformact = 'Nueva';
     }
   }
 

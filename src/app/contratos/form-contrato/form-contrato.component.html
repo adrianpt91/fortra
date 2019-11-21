@@ -1,0 +1,78 @@
+<h3><i class="fas fa-file-alt"></i> {{titleform}} Contrato</h3>
+<hr>
+  <div class="row">
+    <div class="col-md-8 offset-2">
+      <div method="POST">
+        <div class="form-row">
+          <div class="col-md-4">
+            <div class="form-group">
+              <div class="form-label-group">
+                <input [(ngModel)]="contrato.codigo_contrato" type="text" id="inputCodigoContrato" class="form-control" placeholder="Codigo del Contrato" autofocus="autofocus">
+                 <label for="inputCodigoContrato"> Codigo del Contrato</label>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="col-md-8">
+            <div class="form-group">
+              <div class="form-label-group">
+                <input [(ngModel)]="contrato.tipo_contrato" type="text" id="inputTipoContrato" class="form-control" placeholder="Tipo de Contrato" autofocus="autofocus">
+                <label for="inputTipoContrato"> Tipo de Contrato</label>
+              </div>
+            </div>
+          </div>           
+        </div>
+        <div class="form-row">
+          <div class="col-md-8">
+            <div class="form-group">
+              <div class="form-label-group">
+                <input [(ngModel)]="contrato.fecha_alta" type="text" id="inputFechaAlta" class="form-control" placeholder="Fecha de Alta" autofocus="autofocus">
+                <label for="inputFechaAlta"> Fecha de Alta</label>
+              </div>
+            </div>
+          </div>           
+        </div>
+        <div class="form-row">
+          <div class="col-md-8">
+            <div class="form-group" *ngIf="editing; else selectTrabajador">
+            </div>
+            <ng-template #selectTrabajador>
+              <div class="form-group">
+                <select class="form-control" id="SelectTrabajador" [(ngModel)]="contrato.trabajador_id">
+                  <option *ngFor="let trabajador of trabajadores" [ngValue]="trabajador.id">{{ trabajador.first_name }} {{ trabajador.last_name }}</option>
+                </select>
+              </div>
+            </ng-template> 
+          </div>           
+        </div>
+        <div class="form-row">
+          <div class="col-md-8">
+            <div class="form-group" *ngIf="editing; else selectCentro">
+            </div>
+            <ng-template #selectCentro>
+              <div class="form-group">
+                <select class="form-control" id="SelectCentro" [(ngModel)]="contrato.centro_id">
+                  <option *ngFor="let centro of centros" [ngValue]="centro.id">{{ centro.nombre_centro }}</option>
+                </select>
+              </div>
+            </ng-template>
+          </div>           
+        </div>
+        <div class="form-row">
+          <div class="col-md-8">
+            <div class="form-group" *ngIf="editing; else selectCargo">
+            </div>
+            <ng-template #selectCargo>
+              <div class="form-group">
+                <select class="form-control" id="SelectCargo" [(ngModel)]="contrato.cargo_id">
+                  <option *ngFor="let cargo of cargos" [ngValue]="cargo.id">{{ cargo.nombre_cargo }}</option>
+                </select>
+              </div>
+            </ng-template>
+            <button class="btn btn-primary" (click)="saveContrato()"><i class="fas fa-plus"></i> Guardar</button><button class="btn btn-secondary" type="button" style="float: right;">Cancelar</button>
+          </div>           
+        </div>  
+      </div>
+    </div>
+  </div>

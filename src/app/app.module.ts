@@ -21,6 +21,7 @@ import { FormCentroComponent } from './centros/form-centro/form-centro.component
 import { FormCargoComponent } from './cargos/form-cargo/form-cargo.component';
 import { FormUnidadComponent } from './UnidadMilitar/form-unidad/form-unidad.component';
 import { FormActividadComponent } from './actividades/form-actividad/form-actividad.component';
+import { FormContratoComponent } from './contratos/form-contrato/form-contrato.component';
 
 const routes: Route[] = [
   {path: '', component: HomeComponent},
@@ -28,6 +29,8 @@ const routes: Route[] = [
   {path: 'home', component: HomeComponent},
   {path: 'trabajadores', component: TrabajadoresComponent},
   {path: 'contratos', component: ContratosComponent},
+  {path: 'contratos/form_contrato', component: FormContratoComponent},
+  {path: 'contratos/form_contrato/:id', component: FormContratoComponent},
   {path: 'centros', component: CentrosComponent},
   {path: 'centros/form_centro', component: FormCentroComponent},
   {path: 'centros/form_centro/:id', component: FormCentroComponent},
@@ -62,6 +65,7 @@ const routes: Route[] = [
     FormCargoComponent,
     FormUnidadComponent,
     FormActividadComponent,
+    FormContratoComponent,
   ],
   imports: [
     BrowserModule,

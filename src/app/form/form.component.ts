@@ -22,11 +22,13 @@ export class FormComponent implements OnInit {
   };
   id: any;
   editing: boolean = false;
+  titleformtrabajador: string;
   trabajadores: Trabajadores[]
   constructor(private trabajadoresService: TrabajadoresService, private activatedRoute: ActivatedRoute) { 
     this.id = this.activatedRoute.snapshot.params['id'];
     if (this.id){
       this.editing = true;
+      this.titleformtrabajador = 'Modificar';
       this.trabajadoresService.get().subscribe((data: any) => {
         //this.trabajadores = data; //Para Django
         this.trabajadores = data.data; //Para Laravel
@@ -37,6 +39,7 @@ export class FormComponent implements OnInit {
       });
     } else {
       this.editing = false;
+      this.titleformtrabajador = 'Nuevo';
     }
   }
 

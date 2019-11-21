@@ -15,11 +15,13 @@ export class FormCentroComponent implements OnInit {
   };
   id: any;
   editing: boolean = false;
+  titleformcentro: string;
   centros: Centro[]
   constructor(private centrosService: CentrosService, private activatedRoute: ActivatedRoute) { 
     this.id = this.activatedRoute.snapshot.params['id'];
     if (this.id){
       this.editing = true;
+      this.titleformcentro = 'Modificar';
       this.centrosService.get().subscribe((data: any) => {
         //this.centros = data; //Para Django
         this.centros = data.data; //Para Laravel
@@ -30,6 +32,7 @@ export class FormCentroComponent implements OnInit {
       });
     } else {
       this.editing = false;
+      this.titleformcentro = 'Nuevo';
     }
   }
 

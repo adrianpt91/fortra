@@ -10,7 +10,7 @@
       <div class="card mb-3">
           <div class="card-header">
             <i class="fas fa-file-alt"></i>
-            Contratos<a class="btn btn-primary btn-icon-text" href="#" type="button" style="float:right;"><i class="fas fa-plus"></i> Agregar</a></div>
+            Contratos<a class="btn btn-primary btn-icon-text" routerLink="/contratos/form_contrato" type="button" style="float:right;"><i class="fas fa-plus"></i> Agregar</a></div>
           <div class="card-body">
             <div class="table-responsive">
               <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="table table-hover" #dataTable width="100%" cellspacing="0">
@@ -34,7 +34,7 @@
                     <td>{{ contrato.cargo.nombre_cargo }}</td>
                     <td>{{ contrato.centro.nombre_centro }}</td>
                     <td>                      
-                      <button class="btn btn-primary btn-icon" type="button" href="#"><i class="fas fa-edit"></i></button>
+                      <button class="btn btn-primary btn-icon" type="button" routerLink="/contratos/form_contrato/{{contrato.id}}"><i class="fas fa-edit"></i></button>
                       <button class="btn btn-danger btn-icon ml-1" type="button" (click)="delete(contrato.id)"><i class="fas fa-trash"></i></button>
                     </td>
                   </tr>

@@ -15,11 +15,13 @@ export class FormUnidadComponent implements OnInit {
   };
   id: any;
   editing: boolean = false;
+  titleformunidad: string;
   unidades: UnidadMilitar[]
   constructor(private unidadesService: UnidadesMilitaresService, private activatedRoute: ActivatedRoute) { 
     this.id = this.activatedRoute.snapshot.params['id'];
     if (this.id){
       this.editing = true;
+      this.titleformunidad = 'Modificar';
       this.unidadesService.get().subscribe((data: any) => {
         //this.unidades = data; //Para Django
         this.unidades = data.data; //Para Laravel
@@ -30,6 +32,7 @@ export class FormUnidadComponent implements OnInit {
       });
     } else {
       this.editing = false;
+      this.titleformunidad = 'Insertar';
     }
   }
 
