@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Centro } from '../../interfaces/centro';
 import { CentrosService } from '../../services/centros.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-form-centro',
@@ -17,7 +17,7 @@ export class FormCentroComponent implements OnInit {
   editing: boolean = false;
   titleformcentro: string;
   centros: Centro[]
-  constructor(private centrosService: CentrosService, private activatedRoute: ActivatedRoute) { 
+  constructor(private centrosService: CentrosService, private activatedRoute: ActivatedRoute, private router: Router) { 
     this.id = this.activatedRoute.snapshot.params['id'];
     if (this.id){
       this.editing = true;
@@ -43,7 +43,8 @@ export class FormCentroComponent implements OnInit {
     if (this.editing){
       this.centrosService.put(this.centro).subscribe((data) => {
         alert('Centro Actualizado');
-        console.log(data);
+        this.router.navigate(['centros']);
+        //console.log(data);
       }, (error) =>{
         console.log(error);
         alert('Ocurrio un error');
@@ -51,7 +52,8 @@ export class FormCentroComponent implements OnInit {
     }else{
       this.centrosService.save(this.centro).subscribe((data) => {
         alert('Centro Guardado');
-        console.log(data);
+        this.router.navigate(['centros']);
+        //console.log(data);
       }, (error) =>{
         console.log(error);
         alert('Ocurrio un error');

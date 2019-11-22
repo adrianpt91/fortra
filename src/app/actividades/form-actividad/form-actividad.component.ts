@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Actividad } from '../../interfaces/actividad';
 import { ActividadesService } from '../../services/actividades.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-form-actividad',
@@ -16,7 +16,7 @@ export class FormActividadComponent implements OnInit {
   editing: boolean = false;
   titleformact: string;
   actividades: Actividad[]
-  constructor(private actividadesService: ActividadesService, private activatedRoute: ActivatedRoute) { 
+  constructor(private actividadesService: ActividadesService, private activatedRoute: ActivatedRoute, private router: Router) { 
     this.id = this.activatedRoute.snapshot.params['id'];
     if (this.id){
       this.editing = true;
@@ -42,7 +42,8 @@ export class FormActividadComponent implements OnInit {
     if (this.editing){
       this.actividadesService.put(this.actividad).subscribe((data) => {
         alert('Actividad Actualizada');
-        console.log(data);
+        this.router.navigate(['actividades']);
+        //console.log(data);
       }, (error) =>{
         console.log(error);
         alert('Ocurrio un error');
@@ -50,7 +51,8 @@ export class FormActividadComponent implements OnInit {
     }else{
       this.actividadesService.save(this.actividad).subscribe((data) => {
         alert('Actividad Guardada');
-        console.log(data);
+        this.router.navigate(['actividades']);
+        //console.log(data);
       }, (error) =>{
         console.log(error);
         alert('Ocurrio un error');

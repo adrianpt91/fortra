@@ -36,10 +36,15 @@
         <div class="form-row">
           <div class="col-md-8">
             <div class="form-group" *ngIf="editing; else selectTrabajador">
+              <div class="form-label-group">
+                <input type="text" id="inputTrabajador" class="form-control" placeholder="Trabajador" autofocus="autofocus" disabled>
+                <label for="inputTrabajador"> {{nombretrabajador}} {{apellidotrabajador}}</label>
+              </div>
             </div>
             <ng-template #selectTrabajador>
               <div class="form-group">
                 <select class="form-control" id="SelectTrabajador" [(ngModel)]="contrato.trabajador_id">
+                  <option [ngValue]="null" disabled>Seleccionar Trabajador</option>
                   <option *ngFor="let trabajador of trabajadores" [ngValue]="trabajador.id">{{ trabajador.first_name }} {{ trabajador.last_name }}</option>
                 </select>
               </div>
@@ -49,10 +54,15 @@
         <div class="form-row">
           <div class="col-md-8">
             <div class="form-group" *ngIf="editing; else selectCentro">
+              <div class="form-label-group">
+                <input type="text" id="inputCentro" class="form-control" placeholder="Centro" autofocus="autofocus" disabled>
+                <label for="inputCentro"> {{centrotrabajador}}</label>
+              </div>
             </div>
             <ng-template #selectCentro>
               <div class="form-group">
                 <select class="form-control" id="SelectCentro" [(ngModel)]="contrato.centro_id">
+                  <option [ngValue]="null" disabled>Seleccionar Centro</option>
                   <option *ngFor="let centro of centros" [ngValue]="centro.id">{{ centro.nombre_centro }}</option>
                 </select>
               </div>
@@ -62,10 +72,15 @@
         <div class="form-row">
           <div class="col-md-8">
             <div class="form-group" *ngIf="editing; else selectCargo">
+              <div class="form-label-group">
+                <input type="text" id="inputCargo" class="form-control" placeholder="Cargo" autofocus="autofocus" disabled>
+                <label for="inputCargo"> {{cargotrabajador}}</label>
+              </div>
             </div>
             <ng-template #selectCargo>
               <div class="form-group">
                 <select class="form-control" id="SelectCargo" [(ngModel)]="contrato.cargo_id">
+                  <option [ngValue]="null" disabled>Seleccionar Cargo</option>
                   <option *ngFor="let cargo of cargos" [ngValue]="cargo.id">{{ cargo.nombre_cargo }}</option>
                 </select>
               </div>

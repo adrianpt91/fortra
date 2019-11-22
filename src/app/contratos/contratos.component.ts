@@ -25,7 +25,7 @@ export class ContratosComponent implements OnDestroy, OnInit {
     getContratos() {
       this.contratosService.get().subscribe((data: any) =>{
           console.log(data);
-          //this.trabajadores = data; //Para Django
+          //this.contratos = data; //Para Django
           this.contratos = data.data; //Para Laravel
           this.dtTrigger.next();
       }, (error) =>{

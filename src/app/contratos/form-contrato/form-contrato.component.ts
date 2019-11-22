@@ -8,6 +8,7 @@ import { CentrosService } from '../../services/centros.service';
 import { Centro } from '../../interfaces/centro';
 import { CargosService } from '../../services/cargos.service';
 import { Cargo } from '../../interfaces/cargo';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-form-contrato',
@@ -26,13 +27,16 @@ export class FormContratoComponent implements OnInit {
   id: any;
   editing: boolean = false;
   titleform: string;
-  select: 'Seleccionar';
   contratos: Contrato[];
   trabajadores: Trabajadores [] = [];
   centros: Centro [] = [];
   cargos: Cargo [] = [];
+  nombretrabajador: string;
+  apellidotrabajador: string;
+  centrotrabajador: string;
+  cargotrabajador: string;
 
-  constructor(private contratosService: ContratosService, private trabajadoresService: TrabajadoresService, private centrosService: CentrosService, private cargosService: CargosService, private activatedRoute: ActivatedRoute) { 
+  constructor(private contratosService: ContratosService, private trabajadoresService: TrabajadoresService, private centrosService: CentrosService, private cargosService: CargosService, private router: Router, private activatedRoute: ActivatedRoute) { 
     this.id = this.activatedRoute.snapshot.params['id'];
     this.getTrabajadores();
     this.getCentros();
@@ -44,6 +48,10 @@ export class FormContratoComponent implements OnInit {
         //this.contratos = data; //Para Django
         this.contratos = data.data; //Para Laravel
         this.contrato = this.contratos.find((t) => {return t.id == this.id});
+        this.nombretrabajador = this.contrato.trabajador.first_name;
+        this.apellidotrabajador = this.contrato.trabajador.last_name;
+        this.cargotrabajador = this.contrato.cargo.nombre_cargo;
+        this.centrotrabajador = this.contrato.centro.nombre_centro;
         //console.log(this.contrato);
       }, (error) => {
         console.log(error);
@@ -91,7 +99,8 @@ export class FormContratoComponent implements OnInit {
     if (this.editing){
       this.contratosService.put(this.contrato).subscribe((data) => {
         alert('Contrato Actualizado');
-        console.log(data);
+        this.router.navigate(['contratos']);
+        //console.log(data);
       }, (error) =>{
         console.log(error);
         alert('Ocurrio un error');
@@ -99,7 +108,8 @@ export class FormContratoComponent implements OnInit {
     }else{
       this.contratosService.save(this.contrato).subscribe((data) => {
         alert('Contrato Guardado');
-        console.log(data);
+        this.router.navigate(['contratos']);
+        //console.log(data);
       }, (error) =>{
         console.log(error);
         alert('Ocurrio un error');

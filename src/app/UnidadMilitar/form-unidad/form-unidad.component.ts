@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UnidadMilitar } from '../../interfaces/unidad_militar';
 import { UnidadesMilitaresService } from '../../services/unidades-militares.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-form-unidad',
@@ -17,7 +17,7 @@ export class FormUnidadComponent implements OnInit {
   editing: boolean = false;
   titleformunidad: string;
   unidades: UnidadMilitar[]
-  constructor(private unidadesService: UnidadesMilitaresService, private activatedRoute: ActivatedRoute) { 
+  constructor(private unidadesService: UnidadesMilitaresService, private activatedRoute: ActivatedRoute, private router: Router) { 
     this.id = this.activatedRoute.snapshot.params['id'];
     if (this.id){
       this.editing = true;
@@ -43,7 +43,8 @@ export class FormUnidadComponent implements OnInit {
     if (this.editing){
       this.unidadesService.put(this.unidad).subscribe((data) => {
         alert('Datos Militares Actualizados');
-        console.log(data);
+        this.router.navigate(['unidadmilitar']);
+        //console.log(data);
       }, (error) =>{
         console.log(error);
         alert('Ocurrio un error');
@@ -51,7 +52,8 @@ export class FormUnidadComponent implements OnInit {
     }else{
       this.unidadesService.save(this.unidad).subscribe((data) => {
         alert('Datos Militares Guardados');
-        console.log(data);
+        this.router.navigate(['unidadmilitar']);
+        //console.log(data);
       }, (error) =>{
         console.log(error);
         alert('Ocurrio un error');

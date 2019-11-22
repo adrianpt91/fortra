@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Cargo } from '../../interfaces/cargo';
 import { CargosService } from '../../services/cargos.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-form-cargo',
@@ -16,7 +16,7 @@ export class FormCargoComponent implements OnInit {
   editing: boolean = false;
   titleformcargo: string;
   cargos: Cargo[]
-  constructor(private cargosService: CargosService, private activatedRoute: ActivatedRoute) { 
+  constructor(private cargosService: CargosService, private activatedRoute: ActivatedRoute, private router: Router) { 
     this.id = this.activatedRoute.snapshot.params['id'];
     if (this.id){
       this.editing = true;
@@ -42,7 +42,8 @@ export class FormCargoComponent implements OnInit {
     if (this.editing){
       this.cargosService.put(this.cargo).subscribe((data) => {
         alert('Cargo Actualizado');
-        console.log(data);
+        this.router.navigate(['cargos']);
+        //console.log(data);
       }, (error) =>{
         console.log(error);
         alert('Ocurrio un error');
@@ -50,7 +51,8 @@ export class FormCargoComponent implements OnInit {
     }else{
       this.cargosService.save(this.cargo).subscribe((data) => {
         alert('Cargo Guardado');
-        console.log(data);
+        this.router.navigate(['cargos']);
+        //console.log(data);
       }, (error) =>{
         console.log(error);
         alert('Ocurrio un error');

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Trabajadores } from '../interfaces/trabajadores';
 import { TrabajadoresService } from '../services/trabajadores.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-form',
@@ -24,7 +24,7 @@ export class FormComponent implements OnInit {
   editing: boolean = false;
   titleformtrabajador: string;
   trabajadores: Trabajadores[]
-  constructor(private trabajadoresService: TrabajadoresService, private activatedRoute: ActivatedRoute) { 
+  constructor(private trabajadoresService: TrabajadoresService, private activatedRoute: ActivatedRoute, private router: Router) { 
     this.id = this.activatedRoute.snapshot.params['id'];
     if (this.id){
       this.editing = true;
@@ -50,6 +50,7 @@ export class FormComponent implements OnInit {
     if (this.editing){
       this.trabajadoresService.put(this.trabajador).subscribe((data) => {
         alert('Trabajador Actualizado');
+        this.router.navigate(['trabajadores']);
         //console.log(data);
       }, (error) =>{
         console.log(error);
@@ -58,7 +59,8 @@ export class FormComponent implements OnInit {
     }else{
       this.trabajadoresService.save(this.trabajador).subscribe((data) => {
         alert('Trabajador Guardado');
-        console.log(data);
+        this.router.navigate(['trabajadores']);
+        //console.log(data);
       }, (error) =>{
         console.log(error);
         alert('Ocurrio un error');
