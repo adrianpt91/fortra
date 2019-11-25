@@ -22,6 +22,11 @@ import { FormCargoComponent } from './cargos/form-cargo/form-cargo.component';
 import { FormUnidadComponent } from './UnidadMilitar/form-unidad/form-unidad.component';
 import { FormActividadComponent } from './actividades/form-actividad/form-actividad.component';
 import { FormContratoComponent } from './contratos/form-contrato/form-contrato.component';
+import { Select2Module } from 'ng2-select2';
+
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { NgxChartsModule } from '@swimlane/ngx-charts';
+//import { ChartsModule } from 'ng2-charts';
 
 const routes: Route[] = [
   {path: '', component: HomeComponent},
@@ -73,7 +78,11 @@ const routes: Route[] = [
     RouterModule.forRoot (routes),
     HttpClientModule,
     FormsModule,
-    DataTablesModule
+    DataTablesModule,
+    //ChartsModule,
+    Select2Module,
+    NgxChartsModule,
+    BrowserAnimationsModule   
   ],
   providers: [],
   bootstrap: [AppComponent]

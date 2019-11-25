@@ -59,30 +59,58 @@
                       </div>
                       <div class="form-row">
                         <div class="col-md-6">
-                          <div class="form-group">
+                          <div class="form-group" *ngIf="editing; else selectSexo">
                             <div class="form-label-group">
                               <input [(ngModel)]="trabajador.sexo" type="text" id="inputSexo" class="form-control" placeholder="Sexo" autofocus="autofocus">
                               <label for="inputSexo"> Sexo</label>
                             </div>
                           </div>
+                          <ng-template #selectSexo>
+                            <div class="form-group">
+                              <select class="form-control" id="SelectSexo" [(ngModel)]="trabajador.sexo">
+                                <option [ngValue]="null" disabled>Sexo</option>
+                                <option value="M">Masculino</option>
+                                <option value="F">Femenino</option>
+                              </select>
+                            </div>
+                          </ng-template>
                         </div>  
                         <div class="col-md-6">
-                          <div class="form-group">
+                          <div class="form-group" *ngIf="editing; else selectMilitancia">
                             <div class="form-label-group">
                               <input [(ngModel)]="trabajador.militancia" type="text" id="inputMilitancia" class="form-control" placeholder="Militancia" autofocus="autofocus">
                               <label for="inputMilitancia"> Militancia</label>
                             </div>
                           </div>
+                          <ng-template #selectMilitancia>
+                              <div class="form-group">
+                                <select class="form-control" id="selectMilitancia" [(ngModel)]="trabajador.militancia">
+                                  <option [ngValue]="null" disabled>Militancia</option>
+                                  <option value="PCC">PCC</option>
+                                  <option value="UJC">UJC</option>
+                                  <option value="no tiene">No tiene</option>
+                                </select>
+                              </div>
+                            </ng-template>
                         </div>   
                     </div>
                     <div class="form-row">
                       <div class="col-md-6">
-                        <div class="form-group">
+                        <div class="form-group" *ngIf="editing; else selectEC">
                           <div class="form-label-group">
                             <input [(ngModel)]="trabajador.ec" type="text" id="inputEC" class="form-control" placeholder="Estado Civil" autofocus="autofocus">
                             <label for="inputEC"> Estado Civil</label>
                           </div>
                         </div>
+                        <ng-template #selectEC>
+                            <div class="form-group">
+                              <select class="form-control" id="selectEC" [(ngModel)]="trabajador.ec">
+                                <option [ngValue]="null" disabled>Estado Civil</option>
+                                <option value="Soltero">Soltero</option>
+                                <option value="Casado">Casado</option>
+                              </select>
+                            </div>
+                          </ng-template>
                       </div> 
                     </div>
                     <button class="btn btn-primary" (click)="saveTrabajador()"><i class="fas fa-plus"></i> Guardar</button><button class="btn btn-secondary" type="button" style="float: right;">Cancelar</button>
