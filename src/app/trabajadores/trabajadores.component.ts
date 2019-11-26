@@ -14,6 +14,7 @@ declare var $: any;
 )
 export class TrabajadoresComponent implements OnDestroy, OnInit{
     trabajadores: Trabajadores [] = [];
+    date: Date = new Date();
 
     // datatable
     //dtOptions: DataTables.Settings = {};

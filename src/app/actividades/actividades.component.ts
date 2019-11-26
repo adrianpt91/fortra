@@ -12,6 +12,7 @@ declare var $: any;
 })
 export class ActividadesComponent implements OnInit {
   actividades: Actividad [] = [];
+  date: Date = new Date();
 
   // datatable
   dtOptions: DataTables.Settings = {};

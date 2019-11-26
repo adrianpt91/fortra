@@ -13,6 +13,7 @@ declare var $: any;
 })
 export class ContratosComponent implements OnDestroy, OnInit {
     contratos: Contrato [] = [];
+    date: Date = new Date();
 
     // datatable
     //dtOptions: DataTables.Settings = {};

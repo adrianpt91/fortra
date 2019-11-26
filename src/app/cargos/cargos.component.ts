@@ -13,6 +13,7 @@ declare var $: any;
 })
 export class CargosComponent implements OnInit, OnDestroy {
   cargos: Cargo [] = [];
+  date: Date = new Date();
 
     // datatable
     dtOptions: DataTables.Settings = {};

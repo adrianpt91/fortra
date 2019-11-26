@@ -10,8 +10,12 @@ import { Trabajadores } from '../interfaces/trabajadores';
 export class HomeComponent implements OnInit {
   trabajadores: Trabajadores [] = [];
   view: any[] = [600, 400];
+  view2: any[] = [400, 300];
   hombres: number = 0;
   mujeres: number = 0;
+  pcc: number = 0;
+  ujc: number = 0;
+  notiene: number = 0;
   date: Date = new Date();
   
 
@@ -22,13 +26,17 @@ export class HomeComponent implements OnInit {
   showLegend = true;
   legendTitle = 'Leyenda';
   showXAxisLabel = true;
-  xAxisLabel = 'Country';
+  xAxisLabel = 'Militancia';
   showYAxisLabel = true;
-  yAxisLabel = 'Sales';
+  yAxisLabel = 'Trabajadores';
   timeline = true;
 
   colorScheme = {
     domain: ['#dc3545', '#007bff' ]
+  };
+
+  colorScheme2 = {
+    domain: ['#9370DB', '#87CEFA', '#FA8072', '#FF7F50', '#90EE90', '#9370DB']
   };
 
   //pie
@@ -44,6 +52,22 @@ public single = [
     "name": "Hombres",
     "value": this.hombres
   }
+];
+
+public single2 = [
+  {
+    "name": "PCC",
+    "value": this.pcc
+  },
+  {
+    "name": "UJC",
+    "value": this.ujc
+  },
+  {
+    "name": "No tiene",
+    "value": this.notiene
+  }
+
 ];
 
 
@@ -74,6 +98,30 @@ public single = [
             "name": "Hombres",
             "value": this.hombres
           }
+        ];
+        for (let i=0; i<this.trabajadores.length; i++) {
+          if (this.trabajadores[i].militancia == 'PCC') {
+            this.pcc = this.pcc+1;
+          } else if(this.trabajadores[i].militancia == 'UJC') {
+            this.ujc = this.ujc+1;
+          } else {
+            this.notiene = this.notiene+1;
+          }   
+        }
+        this.single2 = [
+          {
+            "name": "PCC",
+            "value": this.pcc
+          },
+          {
+            "name": "UJC",
+            "value": this.ujc
+          },
+          {
+            "name": "No tiene",
+            "value": this.notiene
+          }
+        
         ];
     }, (error) =>{
         console.log(error);

@@ -26,6 +26,7 @@ import { Select2Module } from 'ng2-select2';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
+import { GraficosComponent } from './graficos/graficos.component';
 //import { ChartsModule } from 'ng2-charts';
 
 const routes: Route[] = [
@@ -50,7 +51,8 @@ const routes: Route[] = [
   {path: 'actividades/form_actividad/:id', component: FormActividadComponent},
   {path: 'perfil', component: PerfilComponent},
   {path: 'form', component: FormComponent},
-  {path: 'form/:id', component: FormComponent}
+  {path: 'form/:id', component: FormComponent},
+  {path: 'graficos', component: GraficosComponent},
   ];
 
 @NgModule({
@@ -71,6 +73,7 @@ const routes: Route[] = [
     FormUnidadComponent,
     FormActividadComponent,
     FormContratoComponent,
+    GraficosComponent,
   ],
   imports: [
     BrowserModule,

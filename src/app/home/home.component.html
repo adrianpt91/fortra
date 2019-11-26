@@ -91,6 +91,30 @@
             <div class="card-footer small text-muted">Actualizado {{date | date: 'dd/MM/yyyy h:mm:ss a'}}</div>
           </div>
         </div>
+        <div class="col-lg-5">
+          <div class="card mb-3">
+            <div class="card-header">
+              <i class="fas fa-chart-bar"></i>
+              Comportamiento de la Militancia</div>
+            <div class="card-body">
+                <ngx-charts-bar-vertical
+                [view]="view2"  
+                [scheme]="colorScheme2"  
+                [results]="single2"  
+                [gradient]="gradient"  
+                [xAxis]="showXAxis"  
+                [yAxis]="showYAxis"  
+                [legend]="showLegend" 
+                [legendTitle]="legendTitle" 
+                [showXAxisLabel]="showXAxisLabel"  
+                [showYAxisLabel]="showYAxisLabel"  
+                [xAxisLabel]="xAxisLabel"  
+                [yAxisLabel]="yAxisLabel">  
+                </ngx-charts-bar-vertical>
+            </div>
+            <div class="card-footer small text-muted">Actualizado {{date | date: 'dd/MM/yyyy h:mm:ss a'}}</div>
+          </div>
+        </div>
       </div>
 
       

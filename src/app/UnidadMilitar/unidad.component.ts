@@ -13,6 +13,7 @@ declare var $: any;
 })
 export class UnidadComponent implements OnInit {
   unidades: UnidadMilitar [] = [];
+  date: Date = new Date();
 
     // datatable
     dtOptions: DataTables.Settings = {};

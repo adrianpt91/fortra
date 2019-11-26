@@ -1,0 +1,76 @@
+<!-- Breadcrumbs-->
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item">
+      <a routerLink="/home">Home</a>
+    </li>
+    <li class="breadcrumb-item active"> Gráficos</li>
+  </ol>
+
+    <div class="card mb-3">
+      <div class="card-header">
+        <i class="fas fa-chart-bar"></i>
+        Trabajadores por provincia</div>
+      <div class="card-body">
+          <ngx-charts-bar-vertical
+          [view]="view3"  
+          [scheme]="colorScheme3"  
+          [results]="single3"  
+          [gradient]="gradient"  
+          [xAxis]="showXAxis"  
+          [yAxis]="showYAxis"  
+          [legend]="showLegend" 
+          [legendTitle]="legendTitle" 
+          [showXAxisLabel]="showXAxisLabel"  
+          [showYAxisLabel]="showYAxisLabel"  
+          [xAxisLabel]="xAxisLabel2"  
+          [yAxisLabel]="yAxisLabel2">  
+          </ngx-charts-bar-vertical>
+      </div>
+      <div class="card-footer small text-muted">Actualizado {{date | date: 'dd/MM/yyyy h:mm:ss a'}}</div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-7">
+          <div class="card mb-3">
+            <div class="card-header">
+              <i class="fas fa-chart-pie"></i>
+              Trabajadores por sexo</div>
+            <div class="card-body">
+                  <ngx-charts-pie-chart
+                  [view]="view"
+                  [scheme]="colorScheme"
+                  [results]="single"
+                  [gradient]="gradient"
+                  [labels]="showLabels"
+                  [legend]="showLegend"
+                  [legendTitle]="legendTitle">
+                  </ngx-charts-pie-chart>
+            </div>
+            <div class="card-footer small text-muted">Actualizado {{date | date: 'dd/MM/yyyy h:mm:ss a'}}</div>
+          </div>
+        </div>
+        <div class="col-lg-5">
+          <div class="card mb-3">
+            <div class="card-header">
+              <i class="fas fa-chart-bar"></i>
+              Comportamiento de la Militancia</div>
+            <div class="card-body">
+                <ngx-charts-bar-vertical
+                [view]="view2"  
+                [scheme]="colorScheme2"  
+                [results]="single2"  
+                [gradient]="gradient"  
+                [xAxis]="showXAxis"  
+                [yAxis]="showYAxis"  
+                [legend]="showLegend" 
+                [legendTitle]="legendTitle" 
+                [showXAxisLabel]="showXAxisLabel"  
+                [showYAxisLabel]="showYAxisLabel"  
+                [xAxisLabel]="xAxisLabel"  
+                [yAxisLabel]="yAxisLabel">  
+                </ngx-charts-bar-vertical>
+            </div>
+            <div class="card-footer small text-muted">Actualizado {{date | date: 'dd/MM/yyyy h:mm:ss a'}}</div>
+          </div>
+        </div>
+      </div>

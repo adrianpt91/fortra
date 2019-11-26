@@ -13,6 +13,7 @@ declare var $: any;
 })
 export class CentrosComponent implements OnInit {
   centros: Centro [] = [];
+  date: Date = new Date();
 
     // datatable
     dtOptions: DataTables.Settings = {};

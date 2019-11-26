@@ -20,6 +20,8 @@
                     <th>Tipo</th>
                     <th>Fecha Alta</th>
                     <th>Nombre</th>
+                    <th>Apellidos</th>
+                    <th>CI</th>
                     <th>Cargo</th>
                     <th>Centro</th>
                     <th>Acciones</th>
@@ -31,6 +33,8 @@
                     <td>{{ contrato.tipo_contrato }}</td>
                     <td>{{ contrato.fecha_alta }}</td>
                     <td>{{ contrato.trabajador.first_name }}</td>
+                    <td>{{ contrato.trabajador.last_name }}</td>
+                    <td>{{ contrato.trabajador.ci }}</td>
                     <td>{{ contrato.cargo.nombre_cargo }}</td>
                     <td>{{ contrato.centro.nombre_centro }}</td>
                     <td>                      
@@ -42,5 +46,5 @@
               </table>
             </div>
           </div>
-          <div class="card-footer small text-muted">Actualizado 05:00 PM</div>
+          <div class="card-footer small text-muted">Actualizado {{date | date: 'dd/MM/yyyy h:mm:ss a'}}</div>
         </div>
