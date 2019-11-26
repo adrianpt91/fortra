@@ -30,6 +30,7 @@ export class HomeComponent implements OnInit {
   showYAxisLabel = true;
   yAxisLabel = 'Trabajadores';
   timeline = true;
+  showDataLabel = true;
 
   colorScheme = {
     domain: ['#dc3545', '#007bff' ]

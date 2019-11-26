@@ -49,6 +49,7 @@ export class GraficosComponent implements OnInit {
   yAxisLabel = 'Trabajadores';
   yAxisLabel2 = 'Trabajadores';
   timeline = true;
+  showDataLabel = true;
 
   colorScheme = {
     domain: ['#dc3545', '#007bff' ]
